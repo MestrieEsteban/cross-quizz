@@ -7,44 +7,54 @@ A Quasar Framework app
 yarn
 ```
 
-###Configuration Android Studio
-##For macOS
-#install Jdk1.8 and gradle
+### Configuration Android Studio
+
+
+## For macOS
+
+# install Jdk8, gradle and configuration android studio
 ```bash
 brew install openjdk@8
 brew install gradle
 ```
-Add Android SDK and Virtual Machine x86 in Android Studio
-#acceptLicense
+add Android SDK and Virtual Machine x86 in Android Studio
+
+# acceptLicense
 ```bash
 cd ~/Library/Android/sdk/tools/bin
 ./sdkmanager --licenses.
 ```
-#open terminal add export (android_home, android_sdk_root and path) in bash_profile
+
+# open terminal add export (android_home, android_sdk_root and path) in bash_profile
 ```bash
 open ~/.bash_profile
 ```
-Add this line :
+add this line :
 ```bash
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools; PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 ```
-##For windows
-#install Jdk1.8 and gradle
+
+
+## For windows
+
+# install Jdk8, gradle and configuration android studio
 ```bash
 Go to the site : https://gradle.org/releases/ and download zip
 Set environement variable GRADLE_HOME with PATH
 Go tp the site https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html and download zip
 Set environement java with openjdk 1.8
 ```
-Add Android SDK and Virtual Machine x86 in Android Studio
-#acceptLicense
+add Android SDK and Virtual Machine x86 in Android Studio
+
+# acceptLicense
 ```bash
 cd ~/%USERPROFILE%\AppData\Local/Android/sdk/tools/bin
 ./sdkmanager --licenses.
 ```
-#open terminal and add export (android_home, android_sdk_root and path) in bash_profile
+
+# open terminal and add export (android_home, android_sdk_root and path) in bash_profile
 ```bash
 setx ANDROID_HOME "%USERPROFILE%\AppData\Local\Android\Sdk"
 setx ANDROID_SDK_ROOT "%USERPROFILE%\AppData\Local\Android\Sdk"
