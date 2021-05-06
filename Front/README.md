@@ -7,25 +7,25 @@ A Quasar Framework app
 yarn
 ```
 
-### Configuration Android Studio
+# Configuration Android Studio
 
 
 ## For macOS
 
-# install Jdk8, gradle and configuration android studio
+### install Jdk8, gradle and configuration android studio
 ```bash
 brew install openjdk@8
 brew install gradle
 ```
 add Android SDK and Virtual Machine x86 in Android Studio
 
-# acceptLicense
+### acceptLicense
 ```bash
 cd ~/Library/Android/sdk/tools/bin
 ./sdkmanager --licenses.
 ```
 
-# open terminal add export (android_home, android_sdk_root and path) in bash_profile
+### open terminal add export (android_home, android_sdk_root and path) in bash_profile
 ```bash
 open ~/.bash_profile
 ```
@@ -39,7 +39,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/tools; PATH=$PATH:$ANDROID_SDK_ROOT/platform
 
 ## For windows
 
-# install Jdk8, gradle and configuration android studio
+### install Jdk8, gradle and configuration android studio
 ```bash
 Go to the site : https://gradle.org/releases/ and download zip
 Set environement variable GRADLE_HOME with PATH
@@ -48,13 +48,13 @@ Set environement java with openjdk 1.8
 ```
 add Android SDK and Virtual Machine x86 in Android Studio
 
-# acceptLicense
+### acceptLicense
 ```bash
 cd ~/%USERPROFILE%\AppData\Local/Android/sdk/tools/bin
 ./sdkmanager --licenses.
 ```
 
-# open terminal and add export (android_home, android_sdk_root and path) in bash_profile
+### open terminal and add export (android_home, android_sdk_root and path) in bash_profile
 ```bash
 setx ANDROID_HOME "%USERPROFILE%\AppData\Local\Android\Sdk"
 setx ANDROID_SDK_ROOT "%USERPROFILE%\AppData\Local\Android\Sdk"
