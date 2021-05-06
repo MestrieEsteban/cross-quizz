@@ -31,7 +31,7 @@ export JAVA_HOME_8=$(/usr/libexec/java_home -v1.8)
 export JAVA_HOME=$JAVA_HOME_8
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-PATH=$PATH:$ANDROID_SDK_ROOT/tools; PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools; PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 ```
 ## For windows
