@@ -50,22 +50,22 @@ setx ANDROID_SDK_ROOT "%USERPROFILE%\AppData\Local\Android\Sdk"
 setx path "%path%;%ANDROID_SDK_ROOT%\tools;%ANDROID_SDK_ROOT%\platform-tools;<gradle_path>\bin;"
 ```
 # Script
-### Start the app with mode web in development mode
+### Start the app browser in development mode
 ```bash
 yarn start
 ```
 
-### Start the app with mode electron in development mode
+### Start the app desktop in development mode
 ```bash
-yarn electron
+yarn desktop
 ```
 
-### Start the app with mode ios in development mode
+### Start the app mobile(ios) in development mode
 ```bash
 yarn ios
 ```
 
-### Start the app with mode android in development mode
+### Start the app mobile(android) in development mode
 ```bash
 yarn android
 ```
@@ -75,7 +75,7 @@ yarn android
 yarn run lint
 ```
 
-### Build the app with mode web no sepecify parameters or mode (electron, iso and android) specify mode with -m <mode>
+### Build the app browser no sepecify parameters or (desktop, ios and android) specify mode with -m <type>
 ```bash
 yarn run build
 ````
