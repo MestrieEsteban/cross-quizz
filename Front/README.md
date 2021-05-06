@@ -8,23 +8,23 @@ yarn
 
 # Configuration Android Studio
 ## For macOS
-### install Jdk8, gradle and configuration Android Studio
+### Install Jdk8, gradle and configuration Android Studio
 ```bash
 brew tap adoptopenjdk/openjdk
 brew install adoptopenjdk8
 brew install gradle
 ```
-add Android SDK and Virtual Machine x86 in Android Studio
-### acceptLicense
+Add Android SDK and Virtual Machine x86 in Android Studio
+### AcceptLicense
 ```bash
 cd ~/Library/Android/sdk/tools/bin
 ./sdkmanager --licenses.
 ```
-### open terminal add export (android_home, android_sdk_root and path) in zshrc
+### Open terminal add export (android_home, android_sdk_root and path) in zshrc
 ```bash
 open ~/.zshrc
 ```
-add this line :
+Add this line :
 ```bash
 #version
 export JAVA_HOME_8=$(/usr/libexec/java_home -v1.8)
@@ -35,18 +35,18 @@ PATH=$PATH:$ANDROID_SDK_ROOT/tools; PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 ```
 ## For windows
-### install Jdk8, gradle and configuration Android Studio
-Go to the site [https://gradle.org/releases], select the current version and extract zip
-Set environement variable GRADLE_HOME with PATH
-Go to the site [https://github.com/AdoptOpenJDK/openjdk8-binaries/releases], click with OpenJDK<version>-jdk_x64_windows_hotspot_<version>.msi and execute file
-Set environement java with openjdk 1.8
-add Android SDK and Virtual Machine x86 in Android Studio
-### acceptLicense
+### Install Jdk8, gradle and configuration Android Studio
+Go to the site [https://gradle.org/releases], select the current version and extract zip\
+Set environment variable GRADLE_HOME with PATH\
+Go to the site [https://github.com/AdoptOpenJDK/openjdk8-binaries/releases], click with OpenJDK<version>-jdk_x64_windows_hotspot_<version>.msi and execute file\
+Set environment variable JAVA_HOME with PATH\
+Add Android SDK and Virtual Machine x86 in Android Studio
+### AcceptLicense
 ```bash
 cd ~/%USERPROFILE%\AppData\Local/Android/sdk/tools/bin
 ./sdkmanager --licenses.
 ```
-### open terminal and add export (android_home, android_sdk_root and path)
+### Open terminal and add export (android_home, android_sdk_root and path)
 ```bash
 setx ANDROID_HOME "%USERPROFILE%\AppData\Local\Android\Sdk"
 setx ANDROID_SDK_ROOT "%USERPROFILE%\AppData\Local\Android\Sdk"
@@ -78,7 +78,7 @@ yarn android
 yarn run lint
 ```
 
-### Build the app browser no sepecify parameters or (electron, ios and android) specify mode with -m <type>
+### Build the app browser no specify parameters or (electron, ios and android) specify mode with -m <type>
 ```bash
 yarn run build
 ````
