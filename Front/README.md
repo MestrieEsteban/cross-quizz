@@ -61,6 +61,7 @@ setx ANDROID_SDK_ROOT "%USERPROFILE%\AppData\Local\Android\Sdk"
 setx path "%path%;%ANDROID_SDK_ROOT%\tools;%ANDROID_SDK_ROOT%\platform-tools;<gradle_path>\bin;"
 ```
 
+# Launch App with yarn
 ### Start the app with mode web in development mode
 ```bash
 yarn start
