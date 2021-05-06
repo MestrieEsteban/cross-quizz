@@ -971,6 +971,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@ionic-native/ionic-webview@^5.32.1":
+  version "5.32.1"
+  resolved "https://registry.yarnpkg.com/@ionic-native/ionic-webview/-/ionic-webview-5.32.1.tgz#749591b5bcde402443aa229c4a6ba82d40260375"
+  integrity sha512-CqZRxM0LDJgcGVB8o3K7s4c0lsVQAzhsVeP0QIFaIY6vIYYaZYkQaJAnZO7jzVgFZ3dQkPX20YhlqOxYYGuoTg==
+  dependencies:
+    "@types/cordova" latest
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -1165,7 +1172,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/cordova@0.0.34":
+"@types/cordova@0.0.34", "@types/cordova@latest":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@types/cordova/-/cordova-0.0.34.tgz#ea7addf74ecec3d7629827a0c39e2c9addc73d04"
   integrity sha1-6nrd907Ow9dimCegw54smt3HPQQ=
