@@ -8,11 +8,11 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "ios": "quasar dev -m ios",
-    "android": "quasar dev -m android",
-    "electron": "quasar dev -m electron",
-    "webDev": "quasar dev",
-    "webBuild": "quasar build"
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "electron": "yarn build -m electron && yarn dev -m electron",
+    "ios": "yarn build -m ios && yarn dev -m ios",
+    "android": "yarn build -m android && yarn dev -m android"
   },
   "dependencies": {
     "@ionic-native/ionic-webview": "^5.32.1",
@@ -27,6 +27,7 @@
     "electron": "^9.0.0",
     "electron-debug": "^3.0.1",
     "electron-devtools-installer": "^3.0.0",
+    "electron-packager": "^14.1.1",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.7.0",

@@ -7,9 +7,68 @@ A Quasar Framework app
 yarn
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+###Configuration Android Studio
+##For macOS
+#install Jdk1.8 and gradle
 ```bash
-quasar dev
+brew install openjdk@8
+brew install gradle
+```
+Add Android SDK and Virtual Machine x86 in Android Studio
+#acceptLicense
+```bash
+cd ~/Library/Android/sdk/tools/bin
+./sdkmanager --licenses.
+```
+#open terminal add export (android_home, android_sdk_root and path) in bash_profile
+```bash
+open ~/.bash_profile
+```
+Add this line :
+```bash
+export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools; PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+```
+##For windows
+#install Jdk1.8 and gradle
+```bash
+Go to the site : https://gradle.org/releases/ and download zip
+Set environement variable GRADLE_HOME with PATH
+Go tp the site https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html and download zip
+Set environement java with openjdk 1.8
+```
+Add Android SDK and Virtual Machine x86 in Android Studio
+#acceptLicense
+```bash
+cd ~/%USERPROFILE%\AppData\Local/Android/sdk/tools/bin
+./sdkmanager --licenses.
+```
+#open terminal and add export (android_home, android_sdk_root and path) in bash_profile
+```bash
+setx ANDROID_HOME "%USERPROFILE%\AppData\Local\Android\Sdk"
+setx ANDROID_SDK_ROOT "%USERPROFILE%\AppData\Local\Android\Sdk"
+setx path "%path%;%ANDROID_SDK_ROOT%\tools;%ANDROID_SDK_ROOT%\platform-tools;<gradle_path>\bin;"
+```
+
+### Start the app with mode web in development mode
+```bash
+yarn start
+```
+
+### Start the app with mode electron in development mode
+```bash
+yarn electron
+```
+
+### Start the app with mode ios in development mode
+```bash
+yarn ios
+```
+
+### Start the app with mode android in development mode
+```bash
+yarn android
 ```
 
 ### Lint the files
@@ -17,10 +76,10 @@ quasar dev
 yarn run lint
 ```
 
-### Build the app for production
+### Build the app with mode web no sepecify parameters or mode (electron, iso and android) specify mode with -m <mode>
 ```bash
-quasar build
-```
+yarn run build
+````
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
