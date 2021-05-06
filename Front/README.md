@@ -10,7 +10,8 @@ yarn
 ## For macOS
 ### install Jdk8, gradle and configuration Android Studio
 ```bash
-brew install openjdk@8
+brew tap adoptopenjdk/openjdk
+brew install adoptopenjdk8
 brew install gradle
 ```
 add Android SDK and Virtual Machine x86 in Android Studio
@@ -19,24 +20,26 @@ add Android SDK and Virtual Machine x86 in Android Studio
 cd ~/Library/Android/sdk/tools/bin
 ./sdkmanager --licenses.
 ```
-### open terminal add export (android_home, android_sdk_root and path) in bash_profile
+### open terminal add export (android_home, android_sdk_root and path) in zshrc
 ```bash
-open ~/.bash_profile
+open ~/.zshrc
 ```
 add this line :
 ```bash
+#version
+export JAVA_HOME_8=$(/usr/libexec/java_home -v1.8)
+export JAVA_HOME=$JAVA_HOME_8
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools; PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+PATH=$PATH:$ANDROID_SDK_ROOT/tools; PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
 ```
 ## For windows
 ### install Jdk8, gradle and configuration Android Studio
-```bash
-Go to the site : https://gradle.org/releases/ and download zip
+Go to the site [https://gradle.org/releases], select the current version and extract zip
 Set environement variable GRADLE_HOME with PATH
-Go tp the site https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html and download zip
+Go to the site [https://github.com/AdoptOpenJDK/openjdk8-binaries/releases], click with OpenJDK<version>-jdk_x64_windows_hotspot_<version>.msi and execute file
 Set environement java with openjdk 1.8
-```
 add Android SDK and Virtual Machine x86 in Android Studio
 ### acceptLicense
 ```bash
