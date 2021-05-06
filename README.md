@@ -43,7 +43,7 @@ add Android SDK and Virtual Machine x86 in Android Studio
 cd ~/%USERPROFILE%\AppData\Local/Android/sdk/tools/bin
 ./sdkmanager --licenses.
 ```
-### open terminal and add export (android_home, android_sdk_root and path) in bash_profile
+### open terminal and add export (android_home, android_sdk_root and path)
 ```bash
 setx ANDROID_HOME "%USERPROFILE%\AppData\Local\Android\Sdk"
 setx ANDROID_SDK_ROOT "%USERPROFILE%\AppData\Local\Android\Sdk"
