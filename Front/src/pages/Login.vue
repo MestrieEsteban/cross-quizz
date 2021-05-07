@@ -2,10 +2,7 @@
 <q-page>
   <div class="container">
   <section>
-    <h1 class="titleHome"> S'inscrire </h1>
-    <b-field label="Name">
-      <b-input aria-placeholder="name"></b-input>
-    </b-field>
+    <h1 class="titleHome"> Se connecter </h1>
     <b-field label="Email">
       <b-input type="email"
                aria-placeholder="email"
@@ -27,7 +24,7 @@
 
 <script>
 export default {
-  name: "Inscription",
+  name: "Login",
 }
 </script>
 

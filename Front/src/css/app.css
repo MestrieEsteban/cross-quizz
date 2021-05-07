@@ -1,6 +1,7 @@
 /* app global css */
 .titleHome{
   font-size: 40px;
+  justify-content: center;
 }
 .columnCenter{
   justify-content: center;
