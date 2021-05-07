@@ -1,14 +1,16 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
-import { DateTimeResolver } from 'graphql-scalars'
 import { Context } from './context'
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const typeDefs = `
 type Mutation {
-  signupUser(data: UserCreateInput!): User!
-  createQuiz(data: QuizCreateInput): Quiz!
+	signupUser(data: UserCreateInput!): AuthPayload!
+	createQuiz(data: QuizCreateInput): Quiz!
 }
 
 type Query {
+  signinUser(data: UserCreateInput!): AuthPayload!
   allUsers: [User!]!
   getQuiz: [Quiz!]!
   quizById(id: Int): Quiz!
@@ -65,6 +67,11 @@ input UserCreateInput {
   encryptedPassword: String!
 }
 
+input UserLoginInput {
+  email: String!
+  encryptedPassword: String!
+}
+
 input QuizCreateInput {
 	name: String
 	title: String
@@ -80,6 +87,11 @@ input UserUniqueInput {
   id: Int
 }
 
+type AuthPayload {
+  token: String
+  user: User
+}
+
 `
 
 const resolvers = {
@@ -87,37 +99,57 @@ const resolvers = {
 		allUsers: (_parent: any, _args: any, context: Context) => {
 			return context.prisma.user.findMany()
 		},
+		signinUser: async (_parent: any, args: { data: UserLoginInput }, context: Context) => {
+			const hashedPass = await bcrypt.hash(args.data.encryptedPassword, 10)
+			const  user  = await context.prisma.user.findUnique({
+				where: {email: args.data.email}
+			})
+			if (user) {
+				if (bcrypt.compareSync(args.data.encryptedPassword, user.encryptedPassword)) {
+					const token = jwt.sign({ userId: user.id }, "salut")
+					return {
+						token,
+						user,
+					}
+				}
+			}
+		},
 		getQuiz: (_parent: any, _args: any, context: Context) => {
 			return context.prisma.quiz.findMany()
 		},
-		quizById: (_parent, args: { id: number }, context: Context) => {
-			console.log(args.id)
-		  return context.prisma.quiz.findUnique({
-			  where: { id: args.id },
-			  select: {
-				  name: true,
-				  question: {
-					  select: {
-						  id: true,
-						  title: true,
-						  response: {
-							  
-						  }
-					  }
-				  },
-			  }
-		  })
+		quizById: (_parent: any, args: { id: number }, context: Context) => {
+			return context.prisma.quiz.findUnique({
+				where: { id: args.id },
+				select: {
+					name: true,
+					question: {
+						select: {
+							id: true,
+							title: true,
+							response: {
+
+							}
+						}
+					},
+				}
+			})
 		},
 	},
 	Mutation: {
-		signupUser: (_parent: any, args: { data: UserCreateInput }, context: Context) => {
-			return context.prisma.user.create({
+		signupUser: async (_parent: any, args: { data: UserCreateInput }, context: Context) => {
+			const hashedPass = await bcrypt.hash(args.data.encryptedPassword, 10)
+			const { encryptedPassword, ...user } = await context.prisma.user.create({
 				data: {
 					name: args.data.name,
 					email: args.data.email,
-					encryptedPassword: args.data.password,
+					encryptedPassword: hashedPass,
 				},
 			})
+			const token = jwt.sign({ userId: user.id }, "salut")
+			return {
+				token,
+				user,
+			}
 		},
 		createQuiz: (_parent: any, args: { data: QuizCreateInput }, context: Context) => {
 
@@ -135,6 +167,11 @@ interface UserCreateInput {
 	[x: string]: any
 	email: string,
 	name?: string,
+	encryptedPassword: string,
+}
+interface UserLoginInput {
+	[x: string]: any
+	email: string,
 	encryptedPassword: string,
 }
 interface QuizCreateInput {
