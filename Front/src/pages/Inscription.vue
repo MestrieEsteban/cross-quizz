@@ -1,59 +1,49 @@
 <template>
 <q-page>
+  <section>
+    <b-field label="Name">
+      <b-input v-model="name"></b-input>
+    </b-field>
 
+    <b-field label="Email"
+             type="is-danger"
+             message="This email is invalid">
+      <b-input type="email"
+               value="john@"
+               maxlength="30">
+      </b-input>
+    </b-field>
 
-  <div class="column is-12-widescreen">
-    <div class="field">
-    <label class="label">Name</label>
-    <div class="control">
-      <input class="input" type="text" placeholder="Text input">
-    </div>
-  </div>
-  </div>
-  <div class="columns columnCenter">
-  <div class="field">
-    <label class="label">Email</label>
-    <div class="control has-icons-left has-icons-right">
-      <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-      <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-      <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
-    </div>
-    <p class="help is-danger">This email is invalid</p>
-  </div>
-  </div>
-  <div class="columns columnCenter">
-  <div class="field">
-    <p class="control has-icons-left">
-      <input class="input" type="password" placeholder="Password">
-      <span class="icon is-small is-left">
-      <i class="fas fa-lock"></i>
-    </span>
-    </p>
-  </div>
-  </div>
-  <div class="columns columnCenter">
-  <div class="field is-grouped">
-    <div class="control">
-      <button class="button is-link">Submit</button>
-    </div>
-    <div class="control">
-      <button class="button is-link is-light">Cancel</button>
-    </div>
-  </div>
-  </div>
+    <b-field label="Username"
+             type="is-success"
+             message="This username is available">
+      <b-input value="johnsilver" maxlength="30"></b-input>
+    </b-field>
+
+    <b-field label="Password">
+      <b-input type="password"
+               value="iwantmytreasure"
+               password-reveal>
+      </b-input>
+    </b-field>
+
+    <b-field label="Message">
+      <b-input maxlength="200" type="textarea"></b-input>
+    </b-field>
+  </section>
 </q-page>
 </template>
 
 <script>
+import { Table, Input } from 'buefy';
+
 export default {
-  name: "Inscription"
+  name: "Inscription",
+  data() {
+    return {
+      name: 'John Silver'
+    }
+  }
 }
 </script>
 
-<style scoped>
-
-</style>

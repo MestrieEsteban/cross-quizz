@@ -1,39 +1,82 @@
-@charset "utf-8";
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
 
-// Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+// Set your colors
+$primary: #8c67ef;
+$primary-light: findLightColor($primary);
+$primary-dark: findDarkColor($primary);
+$primary-invert: findColorInvert($primary);
+$twitter: #4099FF;
+$twitter-invert: findColorInvert($twitter);
 
-// Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
-$brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
+// Lists and maps
+$custom-colors: null !default;
+$custom-shades: null !default;
 
-// Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: mergeColorMaps(
+    (
+      "white": (
+        $white,
+        $black,
+      ),
+      "black": (
+        $black,
+        $white,
+      ),
+      "light": (
+        $light,
+        $light-invert,
+      ),
+      "dark": (
+        $dark,
+        $dark-invert,
+      ),
+      "primary": (
+        $primary,
+        $primary-invert,
+        $primary-light,
+        $primary-dark,
+      ),
+      "link": (
+        $link,
+        $link-invert,
+        $link-light,
+        $link-dark,
+      ),
+      "info": (
+        $info,
+        $info-invert,
+        $info-light,
+        $info-dark,
+      ),
+      "success": (
+        $success,
+        $success-invert,
+        $success-light,
+        $success-dark,
+      ),
+      "warning": (
+        $warning,
+        $warning-invert,
+        $warning-light,
+        $warning-dark,
+      ),
+      "danger": (
+        $danger,
+        $danger-invert,
+        $danger-light,
+        $danger-dark,
+      ),
+    ),
+    $custom-colors
+);
 
-// Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
 
-// Import only what you need from Bulma
-@import "~bulma/sass/utilities/_all.sass";
-@import "~bulma/sass/base/_all.sass";
-@import "~bulma/sass/elements/button.sass";
-@import "~bulma/sass/elements/container.sass";
-@import "~bulma/sass/elements/title.sass";
-@import "~bulma/sass/form/_all.sass";
-@import "~bulma/sass/components/navbar.sass";
-@import "~bulma/sass/layout/hero.sass";
-@import "~bulma/sass/layout/section.sass";
-@import "~bulma/sass/layout/section.sass";
-@import "~bulma/bulma";
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
