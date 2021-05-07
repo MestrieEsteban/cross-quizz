@@ -4,10 +4,10 @@ const routes = [
     path: '',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      {path: '', component: () => import('pages/Index.vue')},
-      { path: 'Inscription', name: 'Inscription', component: () => import('pages/Inscription.vue') },
-      { path: 'Connexion', component: () => import('pages/Login.vue')},
-      { path: 'quiz/les_quiz', component: () => import('pages/quiz/les_quiz.vue')},
+      {path: '', component: () => import('src/pages')},
+      { path: 'user/inscription', component: () => import('pages/user/inscription.vue') },
+      { path: 'user/connexion', component: () => import('pages/user/login.vue')},
+      { path: 'quiz/lesQuiz', component: () => import('pages/quiz/lesQuiz.vue')},
 		  { path: 'quiz/:name/:id', props: true, component: () => import('pages/quiz/quiz.vue')},
     ]
   },
