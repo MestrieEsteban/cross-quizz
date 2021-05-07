@@ -6,7 +6,9 @@ const routes = [
     children: [
       {path: '', component: () => import('pages/Index.vue')},
       { path: 'Inscription', name: 'Inscription', component: () => import('pages/Inscription.vue') },
-      { path: 'Login', component: () => import('pages/Error404.vue')},
+      { path: 'Connexion', component: () => import('pages/Error404.vue')},
+      { path: 'quiz/les_quiz', component: () => import('pages/quiz/les_quiz.vue')},
+		{ path: 'quiz/:name/:id', props: true, component: () => import('pages/quiz/quiz.vue')},
     ]
   },
 
