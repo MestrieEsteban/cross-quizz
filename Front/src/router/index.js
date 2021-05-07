@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Buefy from 'buefy';
 
 import routes from './routes'
 
 Vue.use(VueRouter)
+Vue.use(Buefy)
 
 /*
  * If not building with SSR mode, you can
