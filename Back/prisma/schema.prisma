@@ -4,24 +4,54 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = "file:./dev.db?socket_timeout=10000"
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  	id    Int     @id @default(autoincrement())
+  	email String  @unique
+	encryptedPassword String?
+  	name  String?
+	userQuiz UserQuiz[]
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  viewCount Int      @default(0)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+model UserQuiz {
+	id    Int     @id @default(autoincrement())
+	quizId Int
+	stats Stats[]
+	user  User? @relation(fields: [userId], references: [id])
+	userId Int?
+}
+
+model Stats {
+	id    Int     @id @default(autoincrement())
+	time String
+	correctResponse Int
+	userQuiz  UserQuiz? @relation(fields: [userQuizId], references: [id])
+	userQuizId Int?
+}
+
+model Quiz {
+	id    Int     @id @default(autoincrement())
+  	name  String  @unique
+	question Question[]
+}
+
+model Question {
+	id    Int     @id @default(autoincrement())
+	title String
+	response Response[]
+	quiz  Quiz? @relation(fields: [quizId], references: [id])
+	quizId Int?
+}
+
+model Response {
+	id    Int     @id @default(autoincrement())
+	response1 String
+	response2 String
+	response3 String
+	response4 String
+	correctResponse Int
+	question  Question? @relation(fields: [questionId], references: [id])
+	questionId Int?
 }

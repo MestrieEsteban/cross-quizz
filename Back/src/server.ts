@@ -6,7 +6,7 @@ import { context } from './context'
 const app = express()
 
 app.use(
-  '/graphql',
+  '/',
   graphqlHTTP({
     schema,
     context: context,
@@ -16,6 +16,5 @@ app.use(
 
 app.listen(4000)
 console.log(`\
-⭐️ Server ready at: http://localhost:4000/graphql
-⭐️ See sample queries: http://pris.ly/e/ts/graphql-express-sdl-first#using-the-graphql-api
+⭐️ Server ready at: http://localhost:4000/
 `)
