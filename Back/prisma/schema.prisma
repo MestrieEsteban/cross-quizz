@@ -18,17 +18,10 @@ model User {
 model UserQuiz {
 	id    Int     @id @default(autoincrement())
 	quizId Int
-	stats Stats[]
-	user  User? @relation(fields: [userId], references: [id])
-	userId Int?
-}
-
-model Stats {
-	id    Int     @id @default(autoincrement())
 	time String
 	correctResponse Int
-	userQuiz  UserQuiz? @relation(fields: [userQuizId], references: [id])
-	userQuizId Int?
+	user  User? @relation(fields: [userId], references: [id])
+	userId Int?
 }
 
 model Quiz {

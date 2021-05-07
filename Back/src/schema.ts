@@ -1,4 +1,5 @@
 import { makeExecutableSchema } from '@graphql-tools/schema'
+import { countReset, time } from 'console'
 import { Context } from './context'
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -6,7 +7,8 @@ const jwt = require('jsonwebtoken')
 const typeDefs = `
 type Mutation {
 	signupUser(data: UserCreateInput!): AuthPayload!
-	createQuiz(data: QuizCreateInput): Quiz!
+	createQuiz(data: QuizCreateInput!): Quiz!
+	addStats(data: UserAddStatsInput!): UserQuiz!
 }
 
 type Query {
@@ -14,6 +16,7 @@ type Query {
   allUsers: [User!]!
   getQuiz: [Quiz!]!
   quizById(id: Int): Quiz!
+  getUserById(id: Int): User!
 }
 
 type User {
@@ -27,15 +30,9 @@ type User {
 type UserQuiz {
 	id:    Int
 	quizId: Int
-	stats: [Stats!]!
-	userId: Int
-}
-
-type Stats {
-	id: Int
 	time: String
 	correctResponse: Int
-	userQuizId: Int
+	userId: Int
 }
 
 type Quiz {
@@ -87,6 +84,13 @@ input UserUniqueInput {
   id: Int
 }
 
+input UserAddStatsInput {
+	userId: Int
+	quizId: Int
+	time: String
+	correctResponse: Int
+}
+
 type AuthPayload {
   token: String
   user: User
@@ -100,9 +104,8 @@ const resolvers = {
 			return context.prisma.user.findMany()
 		},
 		signinUser: async (_parent: any, args: { data: UserLoginInput }, context: Context) => {
-			const hashedPass = await bcrypt.hash(args.data.encryptedPassword, 10)
-			const  user  = await context.prisma.user.findUnique({
-				where: {email: args.data.email}
+			const user = await context.prisma.user.findUnique({
+				where: { email: args.data.email }
 			})
 			if (user) {
 				if (bcrypt.compareSync(args.data.encryptedPassword, user.encryptedPassword)) {
@@ -134,6 +137,22 @@ const resolvers = {
 				}
 			})
 		},
+		getUserById: (_parent: any, args: { id: number }, context: Context) => {
+			return context.prisma.user.findUnique({
+				where: { id: args.id },
+				select: {
+					name: true,
+					email: true,
+					userQuiz: {
+						select: {
+							quizId: true,
+							time: true,
+							correctResponse: true,
+						}
+					}
+				}
+			})
+		}
 	},
 	Mutation: {
 		signupUser: async (_parent: any, args: { data: UserCreateInput }, context: Context) => {
@@ -151,17 +170,25 @@ const resolvers = {
 				user,
 			}
 		},
+		addStats: async (_parent: any, args: { data: UserAddStatsInput }, context: Context) => {
+			const user = await context.prisma.user.findUnique({
+				where: { id: args.data.userId }
+			})
+			if (user) {
+				return context.prisma.userQuiz.create({
+					data: {
+						quizId: args.data.quizId,
+						time: args.data.time,
+						correctResponse: args.data.correctResponse,
+						userId: args.data.userId
+					},
+				})
+			}
+		},
 		createQuiz: (_parent: any, args: { data: QuizCreateInput }, context: Context) => {
 
 		}
 	},
-	// User: {
-	// 	posts: (parent, _args, context: Context) => {
-	// 		return context.prisma.user.findUnique({
-	// 			where: { id: parent?.id }
-	// 		}).posts()
-	// 	}
-	// }
 }
 interface UserCreateInput {
 	[x: string]: any
@@ -173,6 +200,13 @@ interface UserLoginInput {
 	[x: string]: any
 	email: string,
 	encryptedPassword: string,
+}
+interface UserAddStatsInput {
+	[x: string]: any
+	userId: number
+	quizId: number,
+	time: string,
+	correctResponse: number
 }
 interface QuizCreateInput {
 	[x: string]: any
