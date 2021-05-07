@@ -18,7 +18,7 @@ Add Android SDK and Virtual Machine x86 in Android Studio
 ### AcceptLicense
 ```bash
 cd ~/Library/Android/sdk/tools/bin
-./sdkmanager --licenses.
+./sdkmanager --licenses
 ```
 ### Open terminal add export (android_home, android_sdk_root and path) in zshrc
 ```bash
@@ -44,7 +44,7 @@ Add Android SDK and Virtual Machine x86 in Android Studio
 ### AcceptLicense
 ```bash
 cd ~/%USERPROFILE%\AppData\Local/Android/sdk/tools/bin
-./sdkmanager --licenses.
+./sdkmanager --licenses
 ```
 ### Open terminal and add export (android_home, android_sdk_root and path)
 ```bash
