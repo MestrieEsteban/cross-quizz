@@ -16,7 +16,6 @@
       </b-input>
     </b-field>
     <b-button type="is-info">Envoyer</b-button>
-
   </section>
   </div>
 </q-page>

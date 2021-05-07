@@ -26,9 +26,10 @@ export default {
 	  console.log(this.$router.currentRoute.params.name)
 	  return{
 		  QuizName: this.$router.currentRoute.params.name,
+      // eslint-disable-next-line vue/no-dupe-keys
 		  id: this.$router.currentRoute.params.id
 	  }
   }
-  
+
 }
 </script>
