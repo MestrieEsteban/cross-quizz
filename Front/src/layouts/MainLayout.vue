@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">    </q-header>
     <q-page-container>
-		<nav class="navbar" role="navigation" aria-label="main navigation">
+		<nav class="navbar" role="navigation" style="background-color: #EAE8E1" aria-label="main navigation">
 			<div class="navbar-brand">
 				<a class="navbar-item" href="/">
 				<span style="font-size:23px;"><b>Cross-quiz</b></span>
