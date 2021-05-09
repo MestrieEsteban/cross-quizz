@@ -5,14 +5,11 @@
       <section>
         <h1 class="titleHome"> Profil </h1>
         <b-field label="Name">
-          <b-input disabled="true"></b-input>
+          <b-field> {{ this.name}}</b-field>
         </b-field>
         <br>
         <b-field label="Email">
-          <b-input type="email"
-                   maxlength="30"
-                   disabled="true">
-          </b-input>
+          <b-field> {{ this.email}}</b-field>
         </b-field>
       </section>
     </div>
@@ -21,9 +18,35 @@
 
 <script>
 import navBar from 'components/navBar'
-
+import {getProfilById}from 'src/apollo/queries'
 export default {
   name: "profil",
-  components: {navBar}
+  components: {navBar},
+  data(){
+    return{
+      id: this.$q.localStorage.getItem('id'),
+      name: "",
+      email: "",
+    }
+  },
+  mounted() {
+    this.getInfoProfil()
+  },
+  methods: {
+    async getInfoProfil() {
+      this.$apollo.query({
+        query: getProfilById,
+        variables: {
+          id: this.id,
+        },
+      }).then(result => {
+       if(result.data.getUserById.name !== "" && result.data.getUserById.email !== "")
+       {
+         this.name = result.data.getUserById.name
+         this.email = result.data.getUserById.email
+       }
+      })
+    }
+  }
 }
 </script>
