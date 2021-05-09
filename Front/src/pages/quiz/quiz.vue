@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <navBar/>
     <div class="container">
       <br/>
       <h1 class="title">{{ quizById.name }}</h1>
@@ -56,9 +57,11 @@
 <style></style>
 <script>
 import {ALL_GETQUIZ_QUERY} from 'src/apollo/queries'
+import navBar from 'components/navBar'
 
 export default {
   name: 'quiz',
+  components: {navBar},
   methods: {
     startQuiz() {
       this.startTimer()

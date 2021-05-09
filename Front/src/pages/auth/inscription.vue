@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <navBar/>
     <div class="container">
       <section>
         <h1 class="titleHome"> S'inscrire </h1>
@@ -30,9 +31,10 @@
 
 <script>
 import {signUpUser} from 'src/apollo/mutation'
-
+import navBar from 'components/navBar'
 export default {
   name: "Inscription",
+  components: {navBar},
   data() {
     return {
       name: "",

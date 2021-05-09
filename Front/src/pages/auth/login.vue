@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <navBar/>
     <div class="container">
       <section>
         <h1 class="titleHome"> Se connecter </h1>
@@ -25,9 +26,10 @@
 
 <script>
 import {siginUser} from 'src/apollo/queries'
-
+import navBar from 'components/navBar'
 export default {
   name: "Login",
+  components: {navBar},
   data() {
     return {
       email: "",
@@ -44,9 +46,21 @@ export default {
         },
       }).then(result => {
         if (result.data.signinUser.token !== "" && result.data.signinUser.user.id !== 0) {
-          localStorage.setItem('token', result.data.signinUser.token)
-          localStorage.setItem('id', result.data.signinUser.user.id)
-          this.$router.push('/user/profil')
+          try {
+            this.$q.localStorage.set('token', result.data.signinUser.token)
+          } catch (e) {
+            console.log(e)
+          }
+          try {
+            this.$q.localStorage.set('id', result.data.signinUser.user.id)
+          } catch (e) {
+            console.log(e)
+          }
+          this.$q.sessionStorage.set('token', result.data.signinUser.token)
+          this.$q.sessionStorage.set('id', result.data.signinUser.user.id)
+          if (this.$q.sessionStorage.getItem('token') !== "" && this.$q.sessionStorage.getItem('id') !== 0) {
+            this.$router.push({name: 'profil'})
+          }
         }
       })
     }

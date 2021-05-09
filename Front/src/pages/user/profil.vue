@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <navBar/>
     <div class="container">
       <section>
         <h1 class="titleHome"> Profil </h1>
@@ -19,10 +20,10 @@
 </template>
 
 <script>
+import navBar from 'components/navBar'
+
 export default {
   name: "profil",
-  mounted() {
-    console.log(localStorage.getItem('token'))
-  }
+  components: {navBar}
 }
 </script>

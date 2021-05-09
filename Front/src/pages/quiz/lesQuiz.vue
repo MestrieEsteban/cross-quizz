@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <navBar/>
     <div class="container">
       <br/>
       <div class="columns">
@@ -32,17 +33,12 @@
     </div>
   </q-page>
 </template>
-
-<style>
-.card {
-  max-width: 300px;
-}
-</style>
 <script>
 import {ALL_QUIZ_QUERY} from 'src/apollo/queries'
-
+import navBar from 'components/navBar'
 export default {
   name: 'PageIndex',
+  components: {navBar},
   apollo: {
     getQuiz: {
       query: ALL_QUIZ_QUERY,

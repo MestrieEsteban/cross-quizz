@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <navBar/>
     <div class="container">
       <div class="columns is-centered">
         <h1 class="titleHome"> Bienvenue sur cross-quiz</h1>
@@ -12,7 +13,10 @@
 </template>
 
 <script>
+import navBar from 'components/navBar'
+
 export default {
   name: 'PageIndex',
+  components: { navBar },
 }
 </script>
