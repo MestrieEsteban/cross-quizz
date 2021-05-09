@@ -106,7 +106,7 @@ module.exports = function (/* ctx */) {
 
     // https://v1.quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: false
+      pwa: true
     },
 
     // https://v1.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
@@ -114,9 +114,9 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Quasar App`,
-        short_name: `Quasar App`,
-        description: `A Quasar Framework app`,
+        name: `Cross Quiz`,
+        short_name: `Cross Quiz`,
+        description: `Cross Quiz app`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

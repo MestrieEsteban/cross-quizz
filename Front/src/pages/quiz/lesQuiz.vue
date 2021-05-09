@@ -1,29 +1,29 @@
 <template>
   <q-page>
     <div class="container">
-      <br>
+      <br />
       <div class="columns">
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-6by1">
-                <img
-                  src="https://dl.img-news.com/dl/img/s2/dl/2020/07/harry-potter-movies-leaving-hbo-max.jpg"
-                  alt="Placeholder image"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">Harry potter</p>
-                </div>
+        <div v-for="quiz in getQuiz" :key="quiz.id">
+          <div class="column">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-6by1">
+                  <img :src="quiz.image" alt="Placeholder image" />
+                </figure>
               </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4">{{ quiz.name }}</p>
+                  </div>
+                </div>
 
-              <div class="content">
-				  <a href="#/quiz/Harry Potter/1">
-                	<button class="button">Faire le quiz</button>
-				  </a>
+                <div class="content">
+				  <router-link :to="{ name: 'quiz', params: {id: quiz.id } }">
+                    <button class="button">Faire le quiz</button>
+				  </router-link>
+
+                </div>
               </div>
             </div>
           </div>
@@ -39,7 +39,13 @@
 }
 </style>
 <script>
+import { ALL_QUIZ_QUERY } from '../../apollo/queries'
 export default {
   name: 'PageIndex',
+  apollo: {
+    getQuiz: {
+      query: ALL_QUIZ_QUERY,
+    },
+  },
 }
 </script>

@@ -38,6 +38,7 @@ type UserQuiz {
 type Quiz {
 	id: Int
 	name : String
+	image: String
 	question: [Question!]!
 }
 
@@ -72,6 +73,7 @@ input UserLoginInput {
 input QuizCreateInput {
 	name: String
 	title: String
+	image: String
 	response1: String
 	response2: String
 	response3: String
@@ -119,6 +121,7 @@ const resolvers = {
 		},
 		getQuiz: (_parent: any, _args: any, context: Context) => {
 			return context.prisma.quiz.findMany()
+			
 		},
 		quizById: (_parent: any, args: { id: number }, context: Context) => {
 			return context.prisma.quiz.findUnique({
@@ -212,6 +215,7 @@ interface QuizCreateInput {
 	[x: string]: any
 	name: string,
 	title: string,
+	image: string,
 	response1: string,
 	response2: string,
 	response3: string,
