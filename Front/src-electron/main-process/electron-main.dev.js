@@ -6,14 +6,15 @@
  */
 
 import electronDebug from 'electron-debug'
-import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
-import { app, BrowserWindow } from 'electron'
+import installExtension, {VUEJS_DEVTOOLS} from 'electron-devtools-installer'
+import {app, BrowserWindow} from 'electron'
+import './electron-main'
 
 app.whenReady().then(() => {
   // allow for a small delay for mainWindow to be created
   setTimeout(() => {
     // Install `electron-debug` with `devtron`
-    electronDebug({ showDevTools: false })
+    electronDebug({showDevTools: false})
 
     // Install vuejs devtools
     installExtension(VUEJS_DEVTOOLS)
@@ -38,4 +39,3 @@ app.whenReady().then(() => {
   }, 250)
 })
 
-import './electron-main'

@@ -1,5 +1,13 @@
 /* app global css */
-.titleHome{
+.titleHome {
   font-size: 40px;
   justify-content: center;
+}
+
+a{
+  color: black;
+}
+
+a:hover {
+  color: black;
 }

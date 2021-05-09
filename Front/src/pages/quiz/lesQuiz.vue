@@ -1,14 +1,14 @@
 <template>
   <q-page>
     <div class="container">
-      <br />
+      <br/>
       <div class="columns">
         <div v-for="quiz in getQuiz" :key="quiz.id">
           <div class="column">
             <div class="card">
               <div class="card-image">
                 <figure class="image is-6by1">
-                  <img :src="quiz.image" alt="Placeholder image" />
+                  <img :src="quiz.image" alt="Placeholder image"/>
                 </figure>
               </div>
               <div class="card-content">
@@ -19,9 +19,9 @@
                 </div>
 
                 <div class="content">
-				  <router-link :to="{ name: 'quiz', params: {id: quiz.id } }">
+                  <router-link :to="{ name: 'quiz', params: {id: quiz.id } }">
                     <button class="button">Faire le quiz</button>
-				  </router-link>
+                  </router-link>
 
                 </div>
               </div>
@@ -39,7 +39,8 @@
 }
 </style>
 <script>
-import { ALL_QUIZ_QUERY } from 'src/apollo/queries'
+import {ALL_QUIZ_QUERY} from 'src/apollo/queries'
+
 export default {
   name: 'PageIndex',
   apollo: {
