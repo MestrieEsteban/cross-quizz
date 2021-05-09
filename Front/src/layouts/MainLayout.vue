@@ -28,10 +28,10 @@
 				<div class="navbar-end">
 				<div class="navbar-item">
 					<div class="buttons">
-					<a class="button is-primary" href="#/user/inscription">
+					<a class="button is-primary" href="#/auth/inscription">
 						<strong>Sign up</strong>
 					</a>
-					<a class="button is-light" href="#/user/connexion">
+					<a class="button is-light" href="#/auth/connexion">
 						Log in
 					</a>
 					</div>

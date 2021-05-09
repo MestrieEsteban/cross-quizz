@@ -1,10 +1,9 @@
 import gql from 'graphql-tag'
 
-export const ALL_COURSES_QUERY = gql`
-  query allUsers {
-    allUsers {
-      id
-      name
+export const siginUser = gql`
+  query {
+    signinUser( data : { email : $email, encryptedPassword: $password} ){
+      token,
     }
   }
 `
