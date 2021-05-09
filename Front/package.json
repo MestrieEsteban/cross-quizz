@@ -1,8 +1,8 @@
 {
   "name": "blabla",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "Cross Quiz app",
+  "productName": "Cross Quiz",
   "author": "MestrieEsteban <esteban94.em@gmail.com>",
   "private": true,
   "scripts": {
