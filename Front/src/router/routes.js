@@ -27,7 +27,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: 'lesQuiz', component: () => import('pages/quiz/lesQuiz.vue')},
-      { path: ':name/:id', props: true, component: () => import('pages/quiz/quiz.vue')},
+      { path: ':name/:id', name: 'quiz', props: true, component: () => import('pages/quiz/quiz.vue')},
     ]
   },
 

@@ -51,7 +51,7 @@
 
 <style></style>
 <script>
-import { ALL_GETQUIZ_QUERY } from '../../apollo/queries'
+import { ALL_GETQUIZ_QUERY } from 'src/apollo/queries'
 
 export default {
   name: 'quiz',
