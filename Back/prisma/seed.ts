@@ -12,6 +12,7 @@ const userData: Prisma.UserCreateInput[] = [
 const quizData: Prisma.QuizCreateInput[] = [
 	{
 		name: 'Harry potter',
+		image: 'https://dl.img-news.com/dl/img/s2/dl/2020/07/harry-potter-movies-leaving-hbo-max.jpg',
 		question: {
 			create: [
 				{
