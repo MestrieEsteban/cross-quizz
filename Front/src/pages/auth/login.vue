@@ -34,26 +34,6 @@ export default {
       password: ""
     }
   },
-  apollo: {
-    user() {
-      if(this.email !== "" && this.password !== ""){
-        return {
-          // gql query
-          query: siginUser,
-          // Static parameters
-          variables: {
-            email: this.email,
-            password: this.password,
-          },
-        }
-      }
-      else {
-        return ""
-      }
-    },
-  },
-  methods: {
-
     async LoginIn() {
       console.log()
     }
@@ -71,7 +51,6 @@ export default {
         localStorage.setItem('token', result.data.signupUser.token)
         this.$router.push('/user/profil')
       }*/
-  },
 }
 </script>
 

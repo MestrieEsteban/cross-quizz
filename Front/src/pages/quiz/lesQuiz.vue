@@ -39,7 +39,7 @@
 }
 </style>
 <script>
-import { ALL_QUIZ_QUERY } from '../../apollo/queries'
+import { ALL_QUIZ_QUERY } from 'src/apollo/queries'
 export default {
   name: 'PageIndex',
   apollo: {
