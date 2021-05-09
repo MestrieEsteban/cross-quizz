@@ -15,16 +15,28 @@
     "android": "yarn build -m android && yarn dev -m android"
   },
   "dependencies": {
+    "@capacitor/android": "^2.4.7",
+    "@capacitor/cli": "^2.4.7",
+    "@capacitor/core": "^2.4.7",
+    "@capacitor/ios": "^2.4.7",
     "@ionic-native/ionic-webview": "^5.32.1",
     "@quasar/extras": "^1.0.0",
+    "@quasar/icongenie": "^2.3.3",
+    "apollo-boost": "^0.4.9",
     "buefy": "^0.9.7",
     "bulma": "^0.9.2",
     "core-js": "^3.6.5",
+    "electron-builder": "^22.11.1",
+    "eslint-plugin-quasar": "^1.0.0",
+    "graphql": "^15.5.0",
     "quasar": "^1.0.0",
-    "vue-material": "^1.0.0-beta-15"
+    "vue-apollo": "^3.0.7",
+    "vue-material": "^1.0.0-beta-15",
+    "workbox-webpack-plugin": "^6.1.5"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-apollo": "^1.0.0-beta.8",
     "babel-eslint": "^10.0.1",
     "devtron": "^1.4.0",
     "electron": "^9.0.0",
@@ -35,6 +47,7 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.7.0",
     "eslint-webpack-plugin": "^2.4.0",
+    "graphql-tag": "^2.12.4",
     "node-sass": "^5.0.0",
     "sass-loader": "10"
   },

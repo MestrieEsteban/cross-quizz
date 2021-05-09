@@ -2,7 +2,7 @@
 <q-page>
   <div class="container">
   <section>
-    <h1 class="titleHome"> S'inscrire </h1>
+    <h1 class="titleHome"> S'inscrire  {{ allUsers[0].id}} </h1>
     <b-field label="Name">
       <b-input aria-placeholder="name"></b-input>
     </b-field>
@@ -26,8 +26,14 @@
 </template>
 
 <script>
+import {ALL_COURSES_QUERY} from '../../apollo/queries'
 export default {
   name: "Inscription",
+  apollo: {
+    allUsers: {
+      query: ALL_COURSES_QUERY,
+    }
+  }
 }
 </script>
 
