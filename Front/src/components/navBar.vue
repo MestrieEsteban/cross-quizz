@@ -15,7 +15,7 @@
     <div class="navbar-menu" id="navMenu">
       <div class="navbar-start">
 
-        <router-link :to="{ name: 'listQuiz' }" class="navbar-item">
+        <router-link :to="{ name: 'listQuiz' }" class="navbar-item" v-if='token !== "" && id !== 0'>
           Les Quiz
         </router-link>
       </div>

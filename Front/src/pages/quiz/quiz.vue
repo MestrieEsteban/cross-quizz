@@ -57,38 +57,16 @@
 <style></style>
 <script>
 import {ALL_GETQUIZ_QUERY} from 'src/apollo/queries'
+import {addStats} from 'src/apollo/mutation'
 import navBar from 'components/navBar'
 
 export default {
   name: 'quiz',
   components: {navBar},
-  methods: {
-    startQuiz() {
-      this.startTimer()
-      this.quizStart = 1
-    },
-    startTimer() {
-      this.timerT = setTimeout(() => {
-        this.timer += 1
-        this.startTimer()
-      }, 1000)
-    },
-    addResponse(response, correctResponse) {
-      if (this.quizEtat.currentQuestion != this.quizById.question.length) {
-        this.quizEtat.currentQuestion += 1
-      } else {
-        clearTimeout(this.timerT)
-        this.quizStart = 2
-      }
-      if (response == correctResponse) {
-        this.quizEtat.nbCorrectResponse += 1
-      }
-    },
-  },
   data() {
     return {
-      // eslint-disable-next-line vue/no-dupe-keys
       routeId: this.$route.params.id,
+      userId: this.$q.localStorage.getItem('id'),
       timerT: '',
       timer: 0,
       quizStart: 0,
@@ -109,5 +87,54 @@ export default {
       },
     },
   },
+  methods: {
+    startQuiz() {
+      this.startTimer()
+      this.quizStart = 1
+    },
+    startTimer() {
+      this.timerT = setTimeout(() => {
+        this.timer += 1
+        this.startTimer()
+      }, 1000)
+    },
+    addResponse(response, correctResponse) {
+      if (this.quizEtat.currentQuestion != this.quizById.question.length) {
+        this.quizEtat.currentQuestion += 1
+      } else {
+        clearTimeout(this.timerT)
+        this.quizStart = 2
+        if(this.quizStart === 2) {
+          this.addScoreByUser()
+        }
+      }
+      if (response == correctResponse) {
+        this.quizEtat.nbCorrectResponse += 1
+      }
+    },
+    async addScoreByUser() {
+      this.$apollo.mutate({
+        mutation: addStats,
+        variables: {
+          userId: this.userId,
+          quizId: this.routeId,
+          time: String(this.timer),
+          correctResponse: this.quizEtat.nbCorrectResponse,
+        },
+      }).then(result => {
+        if (result !== undefined)
+        {
+          alert("Votre score a été sauvegarder dans l'historique des quiz")
+        }
+      })
+      .catch( error => {
+        if(error !== undefined)
+        {
+          alert("Impossible de sauvegarder votre score dans l'historique des quiz")
+        }
+      })
+    }
+  },
+
 }
 </script>

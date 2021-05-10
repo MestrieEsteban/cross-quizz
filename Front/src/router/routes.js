@@ -1,6 +1,6 @@
 const routes = [
   {
-    path: '/',
+    path: '',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {path: '', name: 'accueil', component: () => import('src/pages')},
@@ -26,7 +26,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {path: 'lesQuiz', name: 'listQuiz', component: () => import('pages/quiz/lesQuiz.vue')},
-      {path: ':name/:id', name: 'quiz', props: true, component: () => import('pages/quiz/quiz.vue')},
+      {path: ':id', name: 'quiz', props: true, component: () => import('pages/quiz/quiz.vue')},
     ]
   },
 

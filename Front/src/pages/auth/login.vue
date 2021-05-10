@@ -63,6 +63,7 @@ export default {
           }
         }
       })
+      .catch(alert("Votre email et/ou mot de passe est incorrect"))
     }
   }
 }

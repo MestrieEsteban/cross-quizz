@@ -56,6 +56,7 @@ export default {
           this.$router.push('/auth/connexion')
         }
       })
+      .catch(alert("Votre compte existe déjà"))
     }
   },
 }

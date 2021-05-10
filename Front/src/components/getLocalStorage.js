@@ -27,7 +27,6 @@ export default {
       else {
         this.id = this.$q.localStorage.getItem('token')
       }
-      console.log(this.$q.localStorage.getItem('token'))
     },
     clearStorage()
     {

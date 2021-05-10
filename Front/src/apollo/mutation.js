@@ -12,3 +12,12 @@ export const signUpUser = gql`
   }
 `
 
+export const addStats = gql`
+  mutation addStats ( $userId:  Int! , $quizId: Int!, $time: String!, $correctResponse: Int!){
+    addStats(data:{userId: $userId, quizId: $quizId, time: $time, correctResponse: $correctResponse})
+    {
+      time
+      correctResponse
+    }
+  }
+`
