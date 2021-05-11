@@ -22,7 +22,7 @@
                    v-model="password">
           </b-input>
         </b-field>
-        <b-button type="is-info" v-on:click="signupUser">Envoyer</b-button>
+        <b-button type="is-link" v-on:click="signupUser">Envoyer</b-button>
 
       </section>
     </div>
@@ -56,7 +56,12 @@ export default {
           this.$router.push('/auth/connexion')
         }
       })
-      .catch(alert("Votre compte existe déjà"))
+      .catch(error => {
+        if (error !== undefined)
+        {
+          alert("Votre compte existe déjà")
+        }
+      })
     }
   },
 }

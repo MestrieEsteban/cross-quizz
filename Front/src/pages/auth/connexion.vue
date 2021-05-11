@@ -18,7 +18,7 @@
                    v-model="password">>
           </b-input>
         </b-field>
-        <b-button type="is-info" v-on:click="LoginIn">Envoyer</b-button>
+        <b-button type="is-link" v-on:click="LoginIn">Envoyer</b-button>
       </section>
     </div>
   </q-page>
@@ -28,7 +28,7 @@
 import {siginUser} from 'src/apollo/queries'
 import navBar from 'components/navBar'
 export default {
-  name: "Login",
+  name: "connexion",
   components: {navBar},
   data() {
     return {
@@ -63,7 +63,12 @@ export default {
           }
         }
       })
-      .catch(alert("Votre email et/ou mot de passe est incorrect"))
+      .catch(error => {
+          if (error !== undefined)
+          {
+            alert("Votre email et/ou mot de passe est incorrect")
+        }
+    })
     }
   }
 }

@@ -23,7 +23,6 @@
                   <router-link :to="{ name: 'quiz', params: {id: quiz.id } }">
                     <button class="button">Faire le quiz</button>
                   </router-link>
-
                 </div>
               </div>
             </div>

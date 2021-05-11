@@ -11,3 +11,15 @@
 .profilText {
   color: black;
 }
+
+.border {
+  border: black 1px solid;
+}
+
+.titleQuiz {
+  margin-left: 8%;
+}
+
+.contentQuiz{
+  margin-left: 5%;
+}

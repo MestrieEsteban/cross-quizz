@@ -46,6 +46,12 @@ export default {
          this.email = result.data.getUserById.email
        }
       })
+      .catch(error =>{
+        if(error !== undefined)
+        {
+          alert("Impossible de récupérer les infromation du profil")
+        }
+      })
     }
   }
 }
