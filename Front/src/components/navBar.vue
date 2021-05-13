@@ -8,33 +8,33 @@
       </b-navbar-item>
       <b-navbar-item v-if='token !== "" && id !== 0' >
         <router-link :to="{ name: 'listQuiz' }">
-        <span class="navbarItemMenu"> Les Quiz </span>
+          <span class="navbarItemMenu"> Les Quiz </span>
         </router-link>
       </b-navbar-item>
     </template>
     <template #end>
       <b-navbar-item>
         <div class="buttons" v-if='token === "" && id === 0'>
-            <router-link class="button is-primary" :to="{ name: 'inscription' }">
-              <strong>S'inscrire</strong>
-            </router-link>
+          <router-link class="button is-primary" :to="{ name: 'inscription' }">
+            <strong>S'inscrire</strong>
+          </router-link>
         </div>
         <div  v-else>
-            <router-link class="button is-primary" :to="{ name: 'historique' }">
-              <strong>Historique</strong>
-            </router-link>
+          <router-link class="button is-primary" :to="{ name: 'historique' }">
+            <strong>Historique</strong>
+          </router-link>
         </div>
       </b-navbar-item>
       <b-navbar-item>
         <div class="buttons" v-if='token === "" && id === 0'>
-            <router-link class="button is-primary" :to="{ name: 'connexion' }">
-              Se connecter
-            </router-link>
+          <router-link class="button is-primary" :to="{ name: 'connexion' }">
+            Se connecter
+          </router-link>
         </div>
         <div v-else>
-            <router-link class="button is-primary" :to="{ name: 'profil' }">
-              <strong>Mon profil</strong>
-            </router-link>
+          <router-link class="button is-primary" :to="{ name: 'profil' }">
+            <strong>Mon profil</strong>
+          </router-link>
         </div>
       </b-navbar-item>
       <b-navbar-item>

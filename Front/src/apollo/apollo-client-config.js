@@ -1,3 +1,4 @@
+import ip from 'ip'
 export default async function (/* { app, router, store, ssrContext, urlPath, redirect } */) {
   return {
     default: {
@@ -8,7 +9,7 @@ export default async function (/* { app, router, store, ssrContext, urlPath, red
         // running quasar commands, for example:
         // `GRAPHQL_URI=https://prod.example.com/graphql quasar build`
         // `GRAPHQL_URI=https://dev.example.com/graphql quasar dev`
-        uri: process.env.GRAPHQL_URI || 'http://192.168.1.18:4000/graphql quasar dev'
+        uri: process.env.GRAPHQL_URI || `http://${ip.address()}:4000/graphql quasar dev`
       },
 
       // 'apollo-cache-inmemory' config

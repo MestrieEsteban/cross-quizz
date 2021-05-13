@@ -1,5 +1,5 @@
 {
   "@quasar/apollo": {
-    "graphql_uri": "http://192.168.1.18:4000/graphql quasar dev"
+    "graphql_uri": ""
   }
 }

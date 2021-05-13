@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <marginIos/>
     <navBar/>
     <div class="container is-max-desktop">
       <section>
@@ -32,9 +33,10 @@
 <script>
 import {signUpUser} from 'src/apollo/mutation'
 import navBar from 'components/navBar'
+import marginIos from 'components/marginIos'
 export default {
   name: "Inscription",
-  components: {navBar},
+  components: {navBar,marginIos},
   data() {
     return {
       name: "",

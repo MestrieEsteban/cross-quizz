@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <marginIos/>
     <navBar/>
     <div class="container is-max-desktop">
       <br/>
@@ -35,9 +36,10 @@
 <script>
 import {ALL_QUIZ_QUERY} from 'src/apollo/queries'
 import navBar from 'components/navBar'
+import marginIos from 'components/marginIos'
 export default {
   name: 'PageIndex',
-  components: {navBar},
+  components: {navBar, marginIos},
   apollo: {
     getQuiz: {
       query: ALL_QUIZ_QUERY,

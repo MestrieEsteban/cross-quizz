@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <marginIos/>
     <navBar/>
     <div class="container is-max-desktop">
       <br/>
@@ -61,10 +62,10 @@
 import {ALL_GETQUIZ_QUERY} from 'src/apollo/queries'
 import {addStats} from 'src/apollo/mutation'
 import navBar from 'components/navBar'
-
+import marginIos from 'components/marginIos'
 export default {
   name: 'quiz',
-  components: {navBar},
+  components: {navBar, marginIos},
   data() {
     return {
       routeId: this.$route.params.id,
@@ -147,7 +148,7 @@ export default {
           correctResponse: this.quizEtat.nbCorrectResponse,
         },
       }).then(result => {
-        if (result !== undefined)
+        if (result.data.addStats.time !== "" && result.data.addStats.correctResponse >=0)
         {
           alert("Votre score a été sauvegarder dans l'historique des quiz")
         }

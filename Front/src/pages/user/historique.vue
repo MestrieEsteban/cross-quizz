@@ -1,10 +1,11 @@
 <template>
   <q-page>
+    <marginIos/>
     <navBar/>
     <div class="container is-max-desktop">
       <section>
         <h1 class="titleHome"> Historique </h1>
-        <div v-for='(quiz, index) in historyQuiz' :key="index">
+        <div v-for="(quiz, index) in historyQuiz" :key="index">
           <div class="border">
             <br>
             <b-field class="titleQuiz"> <strong>{{quiz.message}}</strong> </b-field>
@@ -22,34 +23,36 @@
 
 <script>
 import navBar from 'components/navBar'
+import marginIos from 'components/marginIos'
 import {getProfilById, ALL_GETQUIZ_QUERY}from 'src/apollo/queries'
 export default {
   name: "historique",
-  components: {navBar},
+  components: {navBar, marginIos},
   data(){
     return{
       id: this.$q.localStorage.getItem('id'),
-      historyQuiz:[],
+      historyQuiz: [],
       name: '',
       nbQuestion: 0,
       message: '',
     }
   },
   mounted() {
-      this.getHistory()
+    this.getHistory()
   },
   methods: {
     async getHistory() {
+      this.$forceUpdate();
       this.$apollo.query({
         query: getProfilById,
+        loadingKey: 'loading',
         variables: {
           id: this.id,
         },
       }).then(result => {
        if(result.data.getUserById.userQuiz.length > 0)
        {
-        this.historyQuiz = result.data.getUserById.userQuiz
-         this.addElementInHistory()
+         this.addElementInHistory(result.data.getUserById.userQuiz)
        }
       })
       .catch(error => {
@@ -59,14 +62,18 @@ export default {
         }
       })
     },
-    async addElementInHistory()
+    async addElementInHistory(data)
     {
-      this.historyQuiz.forEach((history, index) =>
-      {
-        this.getQuiz(history.quizId, index)
+      data.forEach((history) => {
+        this.historyElements = history
+        this.getQuiz(history.quizId, history)
       })
+      if(data[data.length-1].name !== undefined && data[data.length-1].message !== undefined ) {
+        this.$q.localStorage.set('quiz', data)
+      }
+        this.historyQuiz = this.$q.localStorage.getItem('quiz')
     },
-    async getQuiz(id, index) {
+    async getQuiz(id, data) {
       this.$apollo.query({
         query: ALL_GETQUIZ_QUERY,
         loadingKey: 'loading',
@@ -76,16 +83,15 @@ export default {
       }).then(result => {
         if(result.data.quizById.name !== "" && result.data.quizById.question.length > 0)
         {
-            this.historyQuiz[index].name = result.data.quizById.name
-          if( this.historyQuiz[index].correctResponse !== result.data.quizById.question.length)
+          data.name = result.data.quizById.name
+          if( data.correctResponse !== result.data.quizById.question.length)
           {
-            this.historyQuiz[index].message = "Quiz échoué"
+            data.message = "Quiz échoué"
           }
           else {
-            this.historyQuiz[index].message = "Quiz réussit"
+            data.message = "Quiz réussit"
           }
         }
-        console.log(this.historyQuiz)
       })
         .catch(error => {
           if(error !== undefined)

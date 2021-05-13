@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    <marginIos/>
     <navBar/>
     <div class="container is-max-desktop">
       <section>
@@ -18,10 +19,11 @@
 
 <script>
 import navBar from 'components/navBar'
+import marginIos from 'components/marginIos'
 import {getProfilById}from 'src/apollo/queries'
 export default {
   name: "profil",
-  components: {navBar},
+  components: {navBar, marginIos},
   data(){
     return{
       id: this.$q.localStorage.getItem('id'),

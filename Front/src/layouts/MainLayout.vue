@@ -8,10 +8,11 @@
     </q-header>
     <q-page-container>
       <router-view/>
+      <div style="margin-top: 5%">
+      </div>
     </q-page-container>
   </q-layout>
 </template>
-
 <script>
 export default {
   name: 'MainLayout',

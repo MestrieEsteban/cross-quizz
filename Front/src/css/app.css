@@ -1,9 +1,12 @@
 /* app global css */
 .titleHome {
   font-size: 40px;
-  justify-content: center;
+  text-align: center;
 }
 
+.imgAlign {
+  text-align: center;
+}
 .card {
   max-width: 300px;
 }
