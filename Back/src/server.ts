@@ -1,4 +1,5 @@
 import express from 'express'
+import ip from 'ip'
 import { graphqlHTTP } from 'express-graphql'
 import { schema } from './schema'
 import { context } from './context'
@@ -15,7 +16,7 @@ app.use(
   }),
 )
 
-app.listen(4000)
+app.listen(4000, ip.address())
 console.log(`\
-⭐️ Server ready at: http://localhost:4000/
+⭐️ Server ready at: http://${ip.address()}:4000/
 `)
