@@ -5,10 +5,11 @@
     <div class="container is-max-desktop">
       <br/>
       <div v-if="quizStart == 2">
-      <b-field class="message">{{message}}</b-field>
+      <b-field class="messageQuiz">{{message}}</b-field>
         <br>
       </div>
       <h1 class="title">{{ name }}</h1>
+      <br>
       <h1 class="subtitle">Nombre de question : {{ question.length }}</h1>
       <div v-if="quizStart == 0">
         <b-button type="is-primary" @click="startQuiz">
