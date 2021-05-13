@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <navBar/>
-    <div class="container">
+    <div class="container is-max-desktop">
       <br/>
       <div class="columns">
         <div v-for="quiz in getQuiz" :key="quiz.id">

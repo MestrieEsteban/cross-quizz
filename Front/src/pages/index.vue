@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <navBar/>
-    <div class="container">
+    <div class="container is-max-desktop">
       <div class="columns is-centered">
         <h1 class="titleHome"> Bienvenue sur cross-quiz</h1>
       </div>

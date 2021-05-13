@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <navBar/>
-    <div class="container">
+    <div class="container is-max-desktop">
       <section>
         <h1 class="titleHome"> S'inscrire </h1>
         <b-field label="Name">

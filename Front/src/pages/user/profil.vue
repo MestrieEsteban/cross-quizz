@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <navBar/>
-    <div class="container">
+    <div class="container is-max-desktop">
       <section>
         <h1 class="titleHome"> Profil </h1>
         <b-field label="Name">
@@ -49,7 +49,7 @@ export default {
       .catch(error =>{
         if(error !== undefined)
         {
-          alert("Impossible de récupérer les infromation du profil")
+          alert("Impossible de récupérer les information du profil")
         }
       })
     }

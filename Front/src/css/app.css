@@ -23,3 +23,22 @@
 .contentQuiz{
   margin-left: 5%;
 }
+
+.message{
+  font-size: 40px;
+}
+
+.navbarItemTitle{
+  color: #4a4a4a;
+  font-size: 23px;
+}
+
+.navbarItemMenu{
+  color: #4a4a4a;
+  font-size: 14px;
+}
+
+.navbarItemButton{
+  color: #4a4a4a;
+  font-size: 15px;
+}
