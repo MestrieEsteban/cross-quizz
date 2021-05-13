@@ -50,17 +50,17 @@ export default {
           id: this.id,
         },
       }).then(result => {
-       if(result.data.getUserById.userQuiz.length > 0)
-       {
-         this.addElementInHistory(result.data.getUserById.userQuiz)
-       }
-      })
-      .catch(error => {
-        if(error !== undefined)
+        if(result.data.getUserById.userQuiz.length > 0)
         {
-          alert("Impossible de récupérer votre historique")
+          this.addElementInHistory(result.data.getUserById.userQuiz)
         }
       })
+        .catch(error => {
+          if(error !== undefined)
+          {
+            alert("Impossible de récupérer votre historique")
+          }
+        })
     },
     async addElementInHistory(data)
     {
@@ -71,7 +71,7 @@ export default {
       if(data[data.length-1].name !== undefined && data[data.length-1].message !== undefined ) {
         this.$q.localStorage.set('quiz', data)
       }
-        this.historyQuiz = this.$q.localStorage.getItem('quiz')
+      this.historyQuiz = this.$q.localStorage.getItem('quiz')
     },
     async getQuiz(id, data) {
       this.$apollo.query({

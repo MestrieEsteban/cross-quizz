@@ -153,6 +153,7 @@ export default {
         {
           alert("Votre score a été sauvegarder dans l'historique des quiz")
         }
+        this.$forceUpdate()
       })
       .catch( error => {
         if(error !== undefined)
