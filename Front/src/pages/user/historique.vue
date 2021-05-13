@@ -7,7 +7,8 @@
         <div v-for='(quiz, index) in historyQuiz' :key="index">
           <div class="border">
             <br>
-            <b-field class="titleQuiz"> Quiz n°{{quiz.quizId}} - {{name}}</b-field>
+            <b-field class="titleQuiz"> <strong>{{quiz.message}}</strong> </b-field>
+            <b-field class="titleQuiz"> Quiz n°{{quiz.quizId}} - {{quiz.name}} </b-field>
             <b-field class="contentQuiz"> Temps effectué pour faire le quiz : {{quiz.time}} secondes</b-field>
             <b-field class="contentQuiz"> Nombre de réponse correct : {{quiz.correctResponse}} </b-field>
             <br>
@@ -30,12 +31,12 @@ export default {
       id: this.$q.localStorage.getItem('id'),
       historyQuiz:[],
       name: '',
-      question: [],
+      nbQuestion: 0,
+      message: '',
     }
   },
   mounted() {
       this.getHistory()
-      this.getQuiz()
   },
   methods: {
     async getHistory() {
@@ -48,6 +49,7 @@ export default {
        if(result.data.getUserById.userQuiz.length > 0)
        {
         this.historyQuiz = result.data.getUserById.userQuiz
+         this.addElementInHistory()
        }
       })
       .catch(error => {
@@ -57,20 +59,33 @@ export default {
         }
       })
     },
-    async getQuiz() {
-      console.log(this.id)
+    async addElementInHistory()
+    {
+      this.historyQuiz.forEach((history, index) =>
+      {
+        this.getQuiz(history.quizId, index)
+      })
+    },
+    async getQuiz(id, index) {
       this.$apollo.query({
         query: ALL_GETQUIZ_QUERY,
         loadingKey: 'loading',
         variables: {
-          id: this.id,
+          id: id,
         },
       }).then(result => {
         if(result.data.quizById.name !== "" && result.data.quizById.question.length > 0)
         {
-          this.name = result.data.quizById.name
-          this.question = result.data.quizById.question
+            this.historyQuiz[index].name = result.data.quizById.name
+          if( this.historyQuiz[index].correctResponse !== result.data.quizById.question.length)
+          {
+            this.historyQuiz[index].message = "Quiz échoué"
+          }
+          else {
+            this.historyQuiz[index].message = "Quiz réussit"
+          }
         }
+        console.log(this.historyQuiz)
       })
         .catch(error => {
           if(error !== undefined)

@@ -1,11 +1,15 @@
 <template>
   <b-navbar style="background-color: #EAE8E1">
     <template #start>
-      <b-navbar-item :to="{ name: 'accueil' }">
+      <b-navbar-item>
+        <router-link :to="{ name: 'accueil' }">
           <span class="navbarItemTitle"><b>Cross-quiz</b></span>
+        </router-link>
       </b-navbar-item>
-      <b-navbar-item :to="{ name: 'listQuiz' }" v-if='token !== "" && id !== 0'>
+      <b-navbar-item v-if='token !== "" && id !== 0' >
+        <router-link :to="{ name: 'listQuiz' }">
         <span class="navbarItemMenu"> Les Quiz </span>
+        </router-link>
       </b-navbar-item>
     </template>
     <template #end>

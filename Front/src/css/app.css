@@ -17,7 +17,8 @@
 }
 
 .titleQuiz {
-  margin-left: 8%;
+  font-size: 20px;
+  margin-left: 5%;
 }
 
 .contentQuiz{
@@ -36,9 +37,4 @@
 .navbarItemMenu{
   color: #4a4a4a;
   font-size: 14px;
-}
-
-.navbarItemButton{
-  color: #4a4a4a;
-  font-size: 15px;
 }
