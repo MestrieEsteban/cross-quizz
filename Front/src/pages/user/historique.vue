@@ -40,12 +40,11 @@ export default {
   },
   mounted() {
     this.getHistory()
-	this.$forceUpdate();
   },
   methods: {
     async getHistory() {
       this.$forceUpdate();
-      await this.$apollo.query({
+      this.$apollo.query({
         query: getProfilById,
         loadingKey: 'loading',
         variables: {
@@ -57,12 +56,6 @@ export default {
           this.addElementInHistory(result.data.getUserById.userQuiz)
         }
       })
-        .catch(error => {
-          if(error !== undefined)
-          {
-            alert("Impossible de récupérer votre historique")
-          }
-        })
     },
     addElementInHistory(data)
     {
@@ -78,7 +71,7 @@ export default {
         }
       }
       this.historyQuiz = this.$q.localStorage.getItem('quiz')
-	  this.historyQuiz.reverse()
+	    this.historyQuiz.reverse()
     },
     async getQuiz(id, data) {
       await this.$apollo.query({
