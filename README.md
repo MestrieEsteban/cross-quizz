@@ -42,7 +42,7 @@ yarn android
 
 ## Screen
 <p align="center">
-  <img alt="" src="./Screen/web.png"">
+  <img alt="" src="./Screen/web.png">
 </p>
 <p align="center">
   <img alt="" src="./Screen/desktop.png"">
