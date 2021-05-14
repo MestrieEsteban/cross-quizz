@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     async getInfoProfil() {
-      this.$apollo.query({
+      await this.$apollo.query({
         query: getProfilById,
         variables: {
           id: this.id,

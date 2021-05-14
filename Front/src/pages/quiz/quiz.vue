@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     async getQuiz() {
-      this.$apollo.query({
+      await this.$apollo.query({
         query: ALL_GETQUIZ_QUERY,
         loadingKey: 'loading',
         variables: {
@@ -140,8 +140,7 @@ export default {
       }
     },
     async addScoreByUser() {
-		console.log(this.quizEtat.nbCorrectResponse)
-      this.$apollo.mutate({
+      await this.$apollo.mutate({
         mutation: addStats,
         variables: {
           userId: this.userId,

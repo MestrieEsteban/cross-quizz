@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     async LoginIn() {
-      this.$apollo.query({
+      await this.$apollo.query({
         query: siginUser,
         variables: {
           email: this.email,
@@ -58,9 +58,7 @@ export default {
           } catch (e) {
             console.log(e)
           }
-          this.$q.sessionStorage.set('token', result.data.signinUser.token)
-          this.$q.sessionStorage.set('id', result.data.signinUser.user.id)
-          if (this.$q.sessionStorage.getItem('token') !== "" && this.$q.sessionStorage.getItem('id') !== 0) {
+          if (this.$q.localStorage.getItem('token') !== "" && this.$q.localStorage.getItem('id') !== 0) {
             this.$router.push({name: 'profil'})
           }
         }
