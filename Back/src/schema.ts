@@ -33,6 +33,7 @@ type UserQuiz {
 	time: String
 	correctResponse: Int
 	userId: Int
+	createdAt: String
 }
 
 type Quiz {
@@ -151,6 +152,7 @@ const resolvers = {
 							quizId: true,
 							time: true,
 							correctResponse: true,
+							createdAt: true,
 						}
 					}
 				}

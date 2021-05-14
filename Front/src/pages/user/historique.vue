@@ -12,6 +12,7 @@
             <b-field class="titleQuiz"> Quiz n°{{quiz.quizId}} - {{quiz.name}} </b-field>
             <b-field class="contentQuiz"> Temps effectué pour faire le quiz : {{quiz.time}} secondes</b-field>
             <b-field class="contentQuiz"> Nombre de réponse correct : {{quiz.correctResponse}} </b-field>
+            <b-field class="contentQuiz"> {{new Date(quiz.createdAt *1).getDate()}}/{{new Date(quiz.createdAt *1).getMonth()+1}}/{{new Date(quiz.createdAt *1).getFullYear()}} {{new Date(quiz.createdAt *1).getHours()}}:{{new Date(quiz.createdAt *1).getMinutes()}}</b-field>
             <br>
           </div>
           <br>
@@ -40,6 +41,7 @@ export default {
   },
   mounted() {
     this.getHistory()
+	this.$forceUpdate();
   },
   methods: {
     async getHistory() {
@@ -73,6 +75,7 @@ export default {
         this.$q.localStorage.set('quiz', data)
       }
       this.historyQuiz = this.$q.localStorage.getItem('quiz')
+	  this.historyQuiz.reverse()
     },
     async getQuiz(id, data) {
       this.$apollo.query({

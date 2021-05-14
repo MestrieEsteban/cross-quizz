@@ -47,6 +47,7 @@ export const getProfilById = gql`
         quizId
         time
         correctResponse
+		createdAt
       }
     }
   }`
