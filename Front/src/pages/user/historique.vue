@@ -27,7 +27,7 @@ import navBar from 'components/navBar'
 import marginIos from 'components/marginIos'
 import {getProfilById, ALL_GETQUIZ_QUERY}from 'src/apollo/queries'
 export default {
-	
+
   name: "historique",
   components: {navBar, marginIos},
   data(){
@@ -46,7 +46,7 @@ export default {
   methods: {
     async getHistory() {
       this.$forceUpdate();
-      this.$apollo.query({
+      await this.$apollo.query({
         query: getProfilById,
         loadingKey: 'loading',
         variables: {
@@ -65,7 +65,7 @@ export default {
           }
         })
     },
-    async addElementInHistory(data)
+    addElementInHistory(data)
     {
       data.forEach((history) => {
         this.historyElements = history
@@ -78,7 +78,7 @@ export default {
 	  this.historyQuiz.reverse()
     },
     async getQuiz(id, data) {
-      this.$apollo.query({
+      await this.$apollo.query({
         query: ALL_GETQUIZ_QUERY,
         loadingKey: 'loading',
         variables: {
