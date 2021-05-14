@@ -47,4 +47,11 @@ yarn android
 <p align="center">
   <img alt="" src="./Screens/desktop.png"">
 </p>
+<p align="center">
+  <img alt="" src="./Screens/ios.png"">
+</p>
+<p align="center">
+  <img alt="" src="./Screens/android.png"">
+</p>
+                                          
 
