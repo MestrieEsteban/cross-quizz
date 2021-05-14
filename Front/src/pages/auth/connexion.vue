@@ -1,7 +1,8 @@
 <template>
   <q-page>
+    <marginIos/>
     <navBar/>
-    <div class="container">
+    <div class="container is-max-desktop">
       <section>
         <h1 class="titleHome"> Se connecter </h1>
         <b-field label="Email">
@@ -27,9 +28,10 @@
 <script>
 import {siginUser} from 'src/apollo/queries'
 import navBar from 'components/navBar'
+import marginIos from 'components/marginIos'
 export default {
   name: "connexion",
-  components: {navBar},
+  components: {navBar,marginIos},
   data() {
     return {
       email: "",

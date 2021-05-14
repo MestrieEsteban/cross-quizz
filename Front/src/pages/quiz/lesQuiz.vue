@@ -1,7 +1,8 @@
 <template>
   <q-page>
+    <marginIos/>
     <navBar/>
-    <div class="container">
+    <div class="container is-max-desktop">
       <br/>
       <div class="columns">
         <div v-for="quiz in getQuiz" :key="quiz.id">
@@ -40,9 +41,10 @@
 <script>
 import {ALL_QUIZ_QUERY} from 'src/apollo/queries'
 import navBar from 'components/navBar'
+import marginIos from 'components/marginIos'
 export default {
   name: 'PageIndex',
-  components: {navBar},
+  components: {navBar, marginIos},
   apollo: {
     getQuiz: {
       query: ALL_QUIZ_QUERY,

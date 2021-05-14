@@ -1,9 +1,12 @@
 /* app global css */
 .titleHome {
   font-size: 40px;
-  justify-content: center;
+  text-align: center;
 }
 
+.imgAlign {
+  text-align: center;
+}
 .card {
   max-width: 300px;
 }
@@ -17,9 +20,24 @@
 }
 
 .titleQuiz {
-  margin-left: 8%;
+  font-size: 20px;
+  margin-left: 5%;
 }
 
 .contentQuiz{
   margin-left: 5%;
+}
+
+.messageQuiz{
+  font-size: 40px;
+}
+
+.navbarItemTitle{
+  color: #4a4a4a;
+  font-size: 23px;
+}
+
+.navbarItemMenu{
+  color: #4a4a4a;
+  font-size: 14px;
 }
