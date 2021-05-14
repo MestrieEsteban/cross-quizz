@@ -72,7 +72,11 @@ export default {
         this.getQuiz(history.quizId, history)
       })
       if(data[data.length-1].name !== undefined && data[data.length-1].message !== undefined ) {
-        this.$q.localStorage.set('quiz', data)
+        try {
+          this.$q.localStorage.set('quiz', data)
+        } catch (e) {
+          console.log(e)
+        }
       }
       this.historyQuiz = this.$q.localStorage.getItem('quiz')
 	  this.historyQuiz.reverse()
