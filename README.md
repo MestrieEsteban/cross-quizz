@@ -41,6 +41,10 @@ yarn android
 ```
 
 ## Screen
-![Image web](/Screen/web.png)
-![Image web](/Screen/desktop.png)
+<p align="center">
+  <img alt="" src="./Screen/web.png"">
+</p>
+<p align="center">
+  <img alt="" src="./Screen/desktop.png"">
+</p>
 
