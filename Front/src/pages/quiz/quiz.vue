@@ -119,6 +119,9 @@ export default {
       }, 1000)
     },
     addResponse(response, correctResponse) {
+		if (response === correctResponse) {
+		  this.quizEtat.nbCorrectResponse += 1
+		}
       if (this.quizEtat.currentQuestion !== this.question.length) {
         this.quizEtat.currentQuestion += 1
       } else {
@@ -135,11 +138,9 @@ export default {
           this.addScoreByUser()
         }
       }
-      if (response === correctResponse) {
-        this.quizEtat.nbCorrectResponse += 1
-      }
     },
     async addScoreByUser() {
+		console.log(this.quizEtat.nbCorrectResponse)
       this.$apollo.mutate({
         mutation: addStats,
         variables: {

@@ -26,6 +26,7 @@ import navBar from 'components/navBar'
 import marginIos from 'components/marginIos'
 import {getProfilById, ALL_GETQUIZ_QUERY}from 'src/apollo/queries'
 export default {
+	
   name: "historique",
   components: {navBar, marginIos},
   data(){
